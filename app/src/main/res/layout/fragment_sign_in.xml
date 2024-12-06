@@ -205,7 +205,7 @@
                 android:layout_width="300dp"
                 android:layout_height="240dp"
                 android:layout_marginTop="16dp"
-                android:src="@drawable/avatar_login_cr7"
+                android:src="@drawable/rb_10129"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.495"
                 app:layout_constraintStart_toStartOf="parent"
@@ -219,12 +219,14 @@
         style="@style/BUTTON"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/btn_background"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/bg_circle_white"
         android:text="Đăng Nhập"
         android:textSize="18dp"
+        app:backgroundTint="@color/transparant_purple"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
 

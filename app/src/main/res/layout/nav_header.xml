@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="180dp"
-    android:background="@drawable/bgadmin"
+    android:background="@drawable/bglogin2"
     android:gravity="bottom"
     android:orientation="vertical"
     android:paddingLeft="16dp"
@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Một Số Tuỳ Chọn"
-        android:textColor="@color/white"
+        android:textColor="@color/chineseBlack"
         android:textSize="20sp"
         android:textStyle="bold" />
 

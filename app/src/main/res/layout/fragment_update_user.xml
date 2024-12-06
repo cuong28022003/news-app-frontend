@@ -173,7 +173,7 @@
                     android:id="@+id/btnUpdateUser"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:backgroundTint="@color/color2"
+                    android:backgroundTint="@color/transparant_purple"
                     android:drawableLeft="@drawable/baseline_send_24"
                     android:fontFamily="@font/medium"
                     android:text="Cập Nhật Thông Tin"

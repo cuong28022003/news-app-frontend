@@ -2,7 +2,7 @@ package com.hoangtien2k3.news_app.utils
 
 object Constants {
 //    const val BASE_URL_LOCAL = "https://7417-2405-4803-fe03-3600-fc5d-9bb3-999-abad.ngrok-free.app"
-    const val BASE_URL_LOCAL = "https://1b7c-171-243-48-177.ngrok-free.app";
+    const val BASE_URL_LOCAL = "https://37ac-2402-800-63a6-abee-f843-8c40-bd1b-b86a.ngrok-free.app";
 
     const val API_KEY = "bd81e7f01e744515b6db53690c2ff58b"
     const val BASE_URL = "https://newsapi.org/"

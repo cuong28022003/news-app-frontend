@@ -13,10 +13,10 @@
         android:layout_height="match_parent"/>
 
     <LinearLayout
-        android:background="@drawable/bgadmin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/card_view"
+        android:background="@drawable/bglogin2"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -214,7 +214,7 @@
                     style="@style/TitleTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:backgroundTint="@color/color2"
+                    android:backgroundTint="@color/transparant_purple"
                     android:drawableLeft="@drawable/baseline_send_24"
                     android:fontFamily="@font/medium"
                     android:text="Đăng Tin Tức Mới Này."

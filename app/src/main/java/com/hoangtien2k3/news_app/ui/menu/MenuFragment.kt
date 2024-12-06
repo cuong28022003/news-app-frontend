@@ -62,9 +62,9 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
             menuMessage.setOnClickListener { socialNetwork("message") }
             menuZalo.setOnClickListener { socialNetwork("zalo") }
             menuGithub.setOnClickListener { socialNetwork("github") }
-            bieuMau.setOnClickListener { showdialogbottom() }
+            //bieuMau.setOnClickListener { showdialogbottom() }
             football.setOnClickListener {loadFragment(FootballFragment())}
-            tinQuocTe.setOnClickListener {loadFragment(SearchNewsFragment())}
+            //tinQuocTe.setOnClickListener {loadFragment(SearchNewsFragment())}
             btnProfile.setOnClickListener {
                 if (DataLocalManager.getInstance().getInfoUserId().toInt() == 0) {
                     showOptionsDialogNotifyLoginUser()
