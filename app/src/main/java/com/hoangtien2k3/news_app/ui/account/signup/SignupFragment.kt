@@ -1,6 +1,7 @@
 package com.hoangtien2k3.news_app.ui.account.signup
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -16,6 +17,7 @@ import com.hoangtien2k3.news_app.utils.viewBinding
 class SignupFragment : Fragment(R.layout.fragment_sign_up) {
     private val binding by viewBinding(FragmentSignUpBinding::bind)
     private val viewModel: AccountViewModel by viewModels()
+    private val TAG: String = "TOKEN_T"
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -60,6 +62,10 @@ class SignupFragment : Fragment(R.layout.fragment_sign_up) {
                 }
                 is Resource.Loading -> {
                     LoadingScreen.displayLoading(requireContext(), false)
+                }
+                else -> {
+                    // Nếu có thêm các trường hợp khác hoặc fallback mặc định
+                    Log.e(TAG, "Unhandled resource state")
                 }
             }
         }

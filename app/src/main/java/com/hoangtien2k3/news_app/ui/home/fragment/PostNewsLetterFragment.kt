@@ -1,6 +1,7 @@
 package com.hoangtien2k3.news_app.ui.home.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,6 +41,11 @@ class PostNewsLetterFragment : Fragment() {
 
         binding.back.setOnClickListener { requireActivity().onBackPressed() }
         binding.btnPostNews.setOnClickListener {
+            title = binding.txtTitle.text.toString()
+            link = binding.txtLink.text.toString()
+            img = binding.txtImage.text.toString()
+            pubDate = binding.txtDate.text.toString()
+
             if (title == "" || link == "" || img == "" || pubDate == "" || category == "") {
                 Toast.makeText(
                     requireContext(),
@@ -54,10 +60,7 @@ class PostNewsLetterFragment : Fragment() {
     }
 
     private fun initUI() {
-        title = binding.txtTitle.text.toString()
-        link = binding.txtLink.text.toString()
-        img = binding.txtImage.text.toString()
-        pubDate = binding.txtDate.text.toString()
+
 
         // create category bản tin
         val spinner: Spinner = binding.txtCategory
@@ -102,20 +105,26 @@ class PostNewsLetterFragment : Fragment() {
                 is Resource.Error -> {
                     Toast.makeText(
                         requireContext(),
-                        R.string.post_information_failed.toString(),
+                        getString(R.string.post_information_failed),
                         Toast.LENGTH_SHORT
                     ).show()
                 }
                 is Resource.Loading -> {
-                    TODO()
+                    Log.d("PostNewsLetterFragment", "Đang tải...")
                 }
                 is Resource.Success -> {
                     Toast.makeText(
                         requireContext(),
-                        R.string.post_information_successfully.toString(),
+                        getString(R.string.post_information_successfully),
                         Toast.LENGTH_SHORT
                     ).show()
-                    requireActivity().onBackPressed()
+//                    requireActivity().onBackPressedDispatcher.onBackPressed()
+                    // Reset các trường input về giá trị mặc định
+                    binding.txtTitle.text?.clear()
+                    binding.txtLink.text?.clear()
+                    binding.txtImage.text?.clear()
+                    binding.txtDate.text?.clear()
+                    binding.txtCategory.setSelection(0) // Đặt Spinner về item đầu tiên
                 }
             }
         }

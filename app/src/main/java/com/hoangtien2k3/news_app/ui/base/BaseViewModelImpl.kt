@@ -18,11 +18,14 @@ open class BaseViewModelImpl : BaseViewModel, ViewModel() {
         call.enqueue(object : Callback<T> {
             override fun onResponse(call: Call<T>, response: Response<T>) {
                 if (response.isSuccessful) {
+                    Log.d("API", "Response received: ${response.body()}")
                     val responseData = response.body()
                     responseData?.let {
                         resultLiveData.value = Resource.Success(it)
                     }
                 } else {
+                    Log.d("API", "Error response: ${response.code()} - ${response.message()}")
+                    Log.d("API", "Response body: ${response.errorBody()?.string()}")
                     resultLiveData.value = Resource.Error("Request failed")
                 }
             }

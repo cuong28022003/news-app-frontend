@@ -17,6 +17,8 @@ import com.hoangtien2k3.news_app.data.sharedpreferences.DataLocalManager
 import com.hoangtien2k3.news_app.databinding.ItemRowArticleBinding
 import com.hoangtien2k3.news_app.ui.save.SaveBanTinViewModel
 import com.hoangtien2k3.news_app.ui.save.ViewModelProviderFactory
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class BanTinAdapter(
     private val mContext: Context,
@@ -36,7 +38,7 @@ class BanTinAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val tinTuc = mListTinTuc[position]
+        val tinTuc = mListTinTucFiltered[position] // Sử dụng danh sách đã lọc
         holder.binding.tvArticleTitle.text = tinTuc.title
         holder.binding.tvArticlePublished.text = tinTuc.pubDate
 
@@ -78,12 +80,26 @@ class BanTinAdapter(
     }
 
     override fun getItemCount(): Int {
-        return mListTinTuc.size
+        return mListTinTucFiltered.size // Trả về số lượng của danh sách đã lọc
     }
 
     fun updateData(newList: List<BanTin>) {
-        mListTinTuc = newList
+        // Sắp xếp danh sách theo thời gian từ mới nhất đến cũ nhất
+        val sortedList = newList.sortedByDescending { tin ->
+            parsePubDate(tin.pubDate)
+        }
+        mListTinTuc = sortedList
+        mListTinTucFiltered = sortedList // Cập nhật danh sách đã lọc
         notifyDataSetChanged()
+    }
+
+    private fun parsePubDate(pubDate: String): Long {
+        return try {
+            val dateFormat = SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss Z", Locale.ENGLISH)
+            dateFormat.parse(pubDate)?.time ?: 0L
+        } catch (e: Exception) {
+            0L
+        }
     }
 
     inner class ViewHolder(val binding: ItemRowArticleBinding) : RecyclerView.ViewHolder(binding.root)
@@ -108,5 +124,4 @@ class BanTinAdapter(
             notifyDataSetChanged()
         }
     }
-
 }

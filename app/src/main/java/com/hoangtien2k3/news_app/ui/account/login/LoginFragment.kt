@@ -60,12 +60,19 @@ class LoginFragment : Fragment(R.layout.fragment_sign_in) {
                      * **/
                     resource.data?.let {
                         DataLocalManager.getInstance().setSaveTokenKey(it.data.token)
+
+                        // Xác định vai trò dựa trên username
+                        val role = when (it.data.username) {
+                            "taikhoanadmin" -> "ADMIN"
+                            "taikhoanuser" -> "USER"
+                            else -> "USER" // Giá trị mặc định nếu username không khớp
+                        }
                         DataLocalManager.getInstance().setSaveUserInfo(
                             it.data.id,
                             it.data.name,
                             it.data.username,
                             it.data.email,
-                            "USER"
+                            role
                         )
                         Log.d(TAG, it.data.token )
                         Log.d(TAG, it.data.name )
@@ -86,7 +93,11 @@ class LoginFragment : Fragment(R.layout.fragment_sign_in) {
                     Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()
                 }
                 is Resource.Loading -> {
-//                    LoadingScreen.displayLoading(requireContext(), false)
+                    LoadingScreen.displayLoading(requireContext(), false)
+                }
+                else -> {
+                    // Nếu có thêm các trường hợp khác hoặc fallback mặc định
+                    Log.e(TAG, "Unhandled resource state")
                 }
             }
         }

@@ -107,7 +107,7 @@ class MainFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener
             if (DataLocalManager.getInstance().getInfoUserRole() == Constants.ROLE_ADMIN) {
                 loadFragment(PostNewsLetterFragment())
             } else {
-                Toast.makeText(requireContext(), R.string.access_by_admin.toString(), Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), getString(R.string.access_by_admin), Toast.LENGTH_SHORT).show()
             }
         } else if (id == R.id.nav_user_admin) {
             loadFragment(MenuFragment())
